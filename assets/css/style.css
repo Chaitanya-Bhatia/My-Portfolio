@@ -301,6 +301,7 @@
   \*-----------------------------------*/
   
   main {
+    
     margin: 15px 12px;
     margin-bottom: 75px;
     min-width: 259px;
@@ -496,16 +497,16 @@
     #ABOUT
   \*-----------------------------------*/
   
-  .about .article-title { margin-bottom: 15px; }
+  .home .article-title { margin-bottom: 15px; }
   
-  .about-text {
+  .home-text {
     color: var(--light-gray);
     font-size: var(--fs-6);
     font-weight: var(--fw-300);
     line-height: 1.6;
   }
   
-  .about-text p { margin-bottom: 15px; }
+  .home-text p { margin-bottom: 15px; }
   
   
   
@@ -1386,9 +1387,9 @@
      * #ABOUT
      */
   
-    .about .article-title { margin-bottom: 20px; }
+    .home .article-title { margin-bottom: 20px; }
   
-    .about-text { margin-bottom: 40px; }
+    .home-text { margin-bottom: 40px; }
   
     /* service */
   
@@ -1685,10 +1686,12 @@
      * MAIN 
      */
   
-    main { margin-bottom: 60px; }
+    main { margin-bottom: 2%; 
+    margin-top: 2%;}
   
     .main-content {
-      position: relative;
+      
+      position:relative;
       width: max-content;
       margin: auto;
     }
@@ -1700,7 +1703,7 @@
      */
   
     .navbar {
-      position: absolute;
+      position:absolute;
       bottom: auto;
       top: 0;
       left: auto;
@@ -1804,17 +1807,19 @@
      */
   
     main {
-      max-width: 1200px;
+      max-width:98%; /* 1200px */
+      
       margin-inline: auto;
-      display: flex;
+      display:flex;
       justify-content: center;
       align-items: stretch;
       gap: 25px;
+      
     }
   
     .main-content {
       min-width: 75%;
-      width: 75%;
+      width: 100%;
       margin: 0;
     }
   
