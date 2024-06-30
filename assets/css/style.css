@@ -1,13 +1,6 @@
 /*-----------------------------------*\
   #style.css
 \*-----------------------------------*/
-.home #particles-js {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 40%;
-  width: 100%;
-}
 
 /**
  * copyright 2022 @codewithsadee
@@ -504,6 +497,14 @@
   \*-----------------------------------*/
   
   .home .article-title { margin-bottom: 15px; }
+  .home #particles-js {
+    position: absolute;
+    
+    top: 0;
+    left: 0;
+    height: 45%;
+    width: 100%;
+  }
   
   .home-text {
     color: var(--light-gray);
