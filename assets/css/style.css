@@ -1,7 +1,13 @@
 /*-----------------------------------*\
   #style.css
 \*-----------------------------------*/
-
+.home #particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 40%;
+  width: 100%;
+}
 
 /**
  * copyright 2022 @codewithsadee
