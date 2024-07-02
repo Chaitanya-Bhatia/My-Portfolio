@@ -2,7 +2,57 @@
   #style.css
 \*-----------------------------------*/
 
+.wrapper {
+    display: inline-flex;
+    padding: 2%;
+    position: static;
+    margin-right: 30px;
+    margin-left: 20%;
 
+    
+    }
+    
+    .wrapper .icon {
+    border-radius: 20%;
+    position: relative;
+    background-color: #1e1e1f;
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    
+    align-items: center;
+    flex-direction:column;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    }
+    .wrapper .tooltip {
+    top: 0;
+    font-size: 14px;
+    color: #ffffff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    .wrapper .icon:hover .tooltip {
+    top: -45px;
+    opacity: 1;
+    }
+
+    .wrapper .github:hover .tooltip{
+    background-color: #333333;
+    color: #ffffff;
+    transform: rotate(360deg);
+    }
+    .wrapper .linkdin:hover .tooltip{
+    background-color: #3b8dde;
+    transform: rotate(360deg);
+    }
+    
 /**
  * copyright 2022 @codewithsadee
  */
