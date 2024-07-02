@@ -1234,15 +1234,7 @@
   
   
   
-    /**
-     * REUSED STYLE
-     */
-  
-    .sidebar, article { width: auto; }
-  
-    article { min-height: 100%; }
-  
-  
+
   
     /**
      * MAIN
@@ -1321,10 +1313,10 @@
   
   
   
-    /**
+    /*
        * RESUME
        */
   
     .timeline-text { max-width: 700px; }
   
-  }
+  }}
