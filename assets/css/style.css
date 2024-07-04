@@ -1842,6 +1842,9 @@
     
   }
   @media (min-width: 1100px){
+article{
+  margin-bottom: 5%;
+}
 
   
       .home-text {
