@@ -109,6 +109,7 @@ for (let i = 0; i < navigationLinks.length; i++) {
 }
 const scrolto=["home","about","projects","blog","resume"];
  if(screen.width>1100){
+
   for (let i = 0; i < pages.length; i++) {
     pages[i].classList.add("active");}
   for (let i = 0; i < navigationLinks.length; i++) {

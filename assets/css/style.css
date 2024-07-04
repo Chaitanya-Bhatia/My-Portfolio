@@ -1845,7 +1845,15 @@
 article{
   margin-bottom: 5%;
 }
-
+.home #particles-js {
+  position:absolute;
+  opacity:calc(0.4);
+  top: 10;
+  left: 0;
+  height: 600px;
+  width: 100%;
+  
+}
   
       .home-text {
         flex: 1 1 40rem;
