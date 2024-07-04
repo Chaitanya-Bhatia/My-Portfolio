@@ -1,7 +1,6 @@
 'use strict';
 
 
-
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 // custom select variables
@@ -86,9 +85,9 @@ for (let i = 0; i < formInputs.length; i++) {
 
 
 // page navigation variables
+
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
-
 // add event to all nav link
 
 for (let i = 0; i < navigationLinks.length; i++) {
@@ -107,6 +106,9 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+// Add touch event listeners to the container or document
+
 const scrolto=["home","about","projects","blog","resume"];
  if(screen.width>1100){
 
@@ -127,3 +129,5 @@ const scrolto=["home","about","projects","blog","resume"];
       }
   
       }});}}
+
+    
