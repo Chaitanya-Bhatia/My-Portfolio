@@ -3,7 +3,7 @@
 
 
 // element toggle function
-
+const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 // custom select variables
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
