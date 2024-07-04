@@ -1,55 +1,92 @@
-let startX, startY, endX, endY;
+let touchStartX, touchStartY, touchEndX, touchEndY;
+  const swipeThreshold = 50; // Minimum swipe distance threshold in pixels
+  const swipeTimeThreshold = 300; // Maximum time allowed to swipe in milliseconds
+  let swipeStartTime;
 
-document.addEventListener("touchstart", function(event) {
-  startX = event.touches[0].clientX;
-  startY = event.touches[0].clientY;
-});
+  const pages = document.querySelectorAll('.page');
+  const leftArrow = document.getElementById('leftArrow');
+  const rightArrow = document.getElementById('rightArrow');
 
-document.addEventListener("touchmove", function(event) {
-  endX = event.touches[0].clientX;
-  endY = event.touches[0].clientY;
-});
+  document.addEventListener("touchstart", function(event) {
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+    swipeStartTime = new Date().getTime(); // Record start time of touch
+  });
 
-document.addEventListener("touchend", function(event) {
-  const diffX = endX - startX;
-  const diffY = endY - startY;
+  document.addEventListener("touchmove", function(event) {
+    touchEndX = event.touches[0].clientX;
+    touchEndY = event.touches[0].clientY;
 
-  // Check if the swipe is horizontal and long enough
-  if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-    if (diffX > 0) {
-      // Swipe right
-      navigate(-1);
-    } else {
-      // Swipe left
-      navigate(1);
+    // Show/hide arrows based on swipe direction
+    if (touchStartX && touchEndX) {
+      const deltaX = touchEndX - touchStartX;
+      if (Math.abs(deltaX) > swipeThreshold) {
+        if (deltaX > 0) {
+          leftArrow.style.display = "block";
+          rightArrow.style.display = "none";
+        } else {
+          leftArrow.style.display = "none";
+          rightArrow.style.display = "block";
+        }
+      } else {
+        leftArrow.style.display = "none";
+        rightArrow.style.display = "none";
+      }
     }
-  }
-});
+  });
 
-function navigate(direction) {
-  let currentIndex;
+  document.addEventListener("touchend", function(event) {
+    if (touchStartX && touchEndX) {
+      const deltaX = touchEndX - touchStartX;
+      const deltaY = touchEndY - touchStartY;
+      const deltaTime = new Date().getTime() - swipeStartTime;
 
-  // Find the currently active page
-  for (let i = 0; i < pages.length; i++) {
-    if (pages[i].classList.contains("active")) {
-      currentIndex = i;
-      break;
+      if (Math.abs(deltaX) > swipeThreshold && Math.abs(deltaY) < Math.abs(deltaX)) {
+        // Horizontal swipe detected
+        if (deltaX > 0) {
+          // Swipe right
+          navigatePrevious();
+        } else {
+          // Swipe left
+          navigateNext();
+        }
+      }
     }
+    // Reset touch coordinates
+    touchStartX = touchStartY = touchEndX = touchEndY = null;
+
+    // Hide arrows after swipe
+    leftArrow.style.display = "none";
+    rightArrow.style.display = "none";
+  });
+
+  function navigateNext() {
+    const activePageIndex = getActivePageIndex();
+    const nextPageIndex = (activePageIndex + 1) % pages.length;
+
+    goToPage(nextPageIndex);
   }
 
-  // Calculate the new index
-  const newIndex = (currentIndex + direction + pages.length) % pages.length;
+  function navigatePrevious() {
+    const activePageIndex = getActivePageIndex();
+    const previousPageIndex = (activePageIndex - 1 + pages.length) % pages.length;
 
-  // Remove active class from all pages and navigation links
-  for (let i = 0; i < pages.length; i++) {
-    pages[i].classList.remove("active");
-    navigationLinks[i].classList.remove("active");
+    goToPage(previousPageIndex);
   }
 
-  // Add active class to the new page and corresponding navigation link
-  pages[newIndex].classList.add("active");
-  navigationLinks[newIndex].classList.add("active");
+  function getActivePageIndex() {
+    for (let i = 0; i < pages.length; i++) {
+      if (pages[i].classList.contains("active")) {
+        return i;
+      }
+    }
+    return -1;
+  }
 
-  // Scroll to the top of the page
-  window.scrollTo(0, 0);
-}
+  function goToPage(index) {
+    // Remove active class from all pages
+    pages.forEach(page => page.classList.remove("active"));
+
+    // Add active class to the new page
+    pages[index].classList.add("active");
+  }
